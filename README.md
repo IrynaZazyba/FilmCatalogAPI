@@ -42,9 +42,9 @@ GET запрос на endpoint: **/films?date_start={date_start}&director_id={di
   
   
 ### Конфигурация базы данных
-1. Скачать файл film_catalog.tar расположенный в директории проекта /src/main/resources/film_catalog.tar.
-2. Создать базу данных командой **_createdb -T template0 FilmCatalog_**.
-3. Командой **_pg_restore -d FilmCatalog film_catalog.tar_** восстановить структуру и данные.
+1. Скачать файл film_catalog.tar расположенный в директории проекта /src/main/resources/film_catalog_dump.tar.
+2. Создать базу данных командой **_createdb -U postgres -T template0 FilmCatalog_** (где -U - имя пользователя БД);
+3. Командой **pg_restore -U postgres -d FilmCatalog film_catalog_dump.tar_** восстановить структуру и данные (указать полный путь местонахождения файла _film_catalog_dump.tar_.
 
 Для корректной работы приложения сконфигурируйте подключение к базе данных в классе \src\main\java\by\zazybo\domain\connection\DBConfig.java. По умолчанию установлены следующие значения:
 - dbType = "postgresql";
