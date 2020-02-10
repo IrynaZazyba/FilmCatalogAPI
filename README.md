@@ -61,7 +61,7 @@ GET запрос на endpoint: **/films?date_start={date_start}&director_id={di
 3. Загружаем все необходимые бибилиотеки из файла **pom.xml**
 4. Сконфигурируйте веб сервер в классе _\src\main\java\by\zazybo\domain\config\Config.java_ указав SERVER_PORT и IP_ADDRESS. По умолчанию значения равны SERVER_PORT=8000,
 IP_ADDRESS="localhost".
-5. Main class для запуска _\java-mastery-rest-api\src\main\java\by\zazybo\domain\runner\Runner.java_.
+5. Main class для запуска _\src\main\java\by\zazybo\domain\runner\Runner.java_.
 
 ### Тестирование
 API покрыт unit тестами, которые расположены в директории _/src/test_.
