@@ -42,11 +42,11 @@ GET запрос на endpoint: **/films?date_start={date_start}&director_id={di
   
   
 ### Конфигурация базы данных
-1. Скачать файл film_catalog.tar расположенный в директории проекта /src/main/resources/film_catalog_dump.tar.
+1. Скачать файл film_catalog_dump.tar расположенный в директории проекта \src\main\resources\film_catalog_dump.tar.
 2. Создать базу данных командой **_createdb -U postgres -T template0 FilmCatalog_** (где -U - имя пользователя БД);
 3. Командой **pg_restore -U postgres -d FilmCatalog film_catalog_dump.tar_** восстановить структуру и данные (указать полный путь местонахождения файла _film_catalog_dump.tar_.
 
-Для корректной работы приложения сконфигурируйте подключение к базе данных в классе \src\main\java\by\zazybo\domain\connection\DBConfig.java. По умолчанию установлены следующие значения:
+Для корректной работы приложения сконфигурируйте подключение к базе данных в классе \src\main\java\by\zazybo\api\config\DBConfig.java. По умолчанию установлены следующие значения:
 - dbType = "postgresql";
 - dbHost = "localhost";
 - dbPort = "5432";
@@ -59,9 +59,8 @@ GET запрос на endpoint: **/films?date_start={date_start}&director_id={di
 1. Распаковать архив с проектом в рабочую директорию.
 2. C помощью File -> Open открыть проект в Intellij.
 3. Загрузить все необходимые бибилиотеки из файла **pom.xml**
-4. Сконфигурировать веб сервер в классе _\src\main\java\by\zazybo\domain\config\Config.java_ указав SERVER_PORT и IP_ADDRESS. По умолчанию значения равны SERVER_PORT=8000,
-IP_ADDRESS="localhost".
-5. Main class для запуска _\src\main\java\by\zazybo\domain\runner\Runner.java_.
+4. Сконфигурировать веб сервер в классе _\src\main\java\by\zazybo\api\config\ServerConfig.java_ указав SERVER_PORT. По умолчанию значение равно SERVER_PORT=8000.
+5. Main class для запуска _\src\main\java\by\zazybo\api\runner\Runner.java_.
 
 ### Тестирование
 API покрыт unit тестами, которые расположены в директории _/src/test_.
