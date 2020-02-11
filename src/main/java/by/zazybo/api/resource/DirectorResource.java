@@ -84,80 +84,27 @@ public class DirectorResource {
     }
 
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
-        DirectorResource director = (DirectorResource) obj;
-        if (this.id != director.id) return false;
-        if (director.firstName == null) {
-            if (this.firstName != null) return false;
-        } else {
-            if (!director.firstName.equals(this.firstName)) return false;
-        }
-        if (director.lastName == null) {
-            if (this.lastName != null) return false;
-        } else {
-            if (!director.lastName.equals(this.lastName)) return false;
-        }
-        if (director.birthDate == null) {
-            if (this.birthDate != null) return false;
-        } else {
-            if (!director.birthDate.equals(this.birthDate)) return false;
-        }
-        if (director.films == null) {
-            if (this.films != null) return false;
-        } else {
-            if (!director.films.equals(this.films)) return false;
-        }
-        if (director.rel == null) {
-            if (this.rel != null) return false;
-        } else {
-            if (!director.rel.equals(this.rel)) return false;
-        }
-        if (director.href == null) {
-            if (this.href != null) return false;
-        } else {
-            if (!director.href.equals(this.href)) return false;
-        }
-        if (director.action == null) {
-            if (this.action != null) return false;
-        } else {
-            if (!director.action.equals(this.action)) return false;
-        }
-        return true;
+    public String getRel() {
+        return rel;
     }
 
-    @Override
-    public int hashCode() {
-        int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        result = prime * result + (firstName == null ? 0 : firstName.hashCode());
-        result = prime * result + (lastName == null ? 0 : lastName.hashCode());
-        result = prime * result + (birthDate == null ? 0 : birthDate.hashCode());
-        result = prime * result + (films == null ? 0 : films.hashCode());
-        result = prime * result + (rel == null ? 0 : rel.hashCode());
-        result = prime * result + (href == null ? 0 : href.hashCode());
-        result = prime * result + (action == null ? 0 : action.hashCode());
-        return result;
+    public void setRel(String rel) {
+        this.rel = rel;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder directorFilms = new StringBuilder();
-        films.forEach(film -> directorFilms.append(film).append(", "));
-        return getClass().getName() + '@' +
-                "id=" + id +
-                ", firstName='" + firstName +
-                ", lastName='" + lastName +
-                ", birthDate=" + birthDate +
-                ", films=" + directorFilms +
-                ", rel=" + rel +
-                ", href=" + href +
-                ", action=" + action;
+    public String getHref() {
+        return href;
     }
 
+    public void setHref(String href) {
+        this.href = href;
+    }
 
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 }

@@ -24,9 +24,9 @@ public class FilmServiceImpl implements Service {
     private DAOFactory daoFactory = DAOFactory.getInstance();
     private FilmDao filmDAO = daoFactory.getFilmDAO();
 
-    private Gson gson = new Gson();
-
     public String getById(int id) throws ServiceException {
+        Gson gson = new Gson();
+
         try {
             Film filmById = filmDAO.getFilmById(id);
             if (filmById == null) {
@@ -36,12 +36,12 @@ public class FilmServiceImpl implements Service {
 
             return gson.toJson(filmResource);
         } catch (DAOException e) {
-            throw new ServiceException(e);
-        }
+            throw new DataBaseConnectionServiceException("DataBase connection problem.", e);        }
     }
 
 
     public String getAll(Map<String, String> params) throws ServiceException {
+        Gson gson = new Gson();
         FilmFilter filmFilter = new FilmFilter(params);
         ExpandFactory expandFactory = ExpandFactory.getInstance();
         FilmExpand filmExpand = expandFactory.getFilmExpand(params);

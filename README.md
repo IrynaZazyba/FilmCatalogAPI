@@ -34,7 +34,7 @@ GET запрос на endpoint: **/films?date_start={date_start}&director_id={di
 #### Ограничения
 Для endpoint-а **/films** применимы фильтры:
 - _date_start_ принимающий значение даты в формате yyyy-mm-dd;
-- _director_id_ принимающий уникальный идентификатор директора целое число.  
+- _director_id_ принимающий уникальный идентификатор режиссера целое число.  
 
 #### Доступные параметры expand
 - для endpoint-а **/films** - _expand=directors_

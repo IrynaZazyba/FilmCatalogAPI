@@ -61,7 +61,8 @@ public class SQLDirectorDAO implements DirectorDao {
 
             while (resultSet.next()) {
                 director = transformToDirector(resultSet);
-                if (!directors.contains(director)) {
+
+                if (!containsDirectorById(directors, director.getId())) {
                     if (resultSet.getObject("film_id") != null) {
                         director.setFilms(transformToFilm(resultSet));
                     }
@@ -70,7 +71,6 @@ public class SQLDirectorDAO implements DirectorDao {
                     for (Director d : directors) {
                         if (d.getId() == resultSet.getInt("director_id")) {
                             d.setFilms(transformToFilm(resultSet));
-
                         }
                     }
                 }
@@ -98,6 +98,15 @@ public class SQLDirectorDAO implements DirectorDao {
         LocalDate release_date = resultSet.getDate("release_date").toLocalDate();
         return new Film(film_id, film_name, release_date, genre);
 
+    }
+
+    private boolean containsDirectorById(List<Director> directors, int id) {
+        for (Director director : directors) {
+            if (director.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

@@ -8,6 +8,7 @@ import by.zazybo.api.dao.factory.DAOFactory;
 import by.zazybo.api.resource.DirectorResource;
 import by.zazybo.api.resource.FilmResource;
 import by.zazybo.api.service.Service;
+import by.zazybo.api.service.exception.DataBaseConnectionServiceException;
 import by.zazybo.api.service.exception.ServiceException;
 import by.zazybo.api.service.expand.ExpandInterface;
 import by.zazybo.api.service.factory.ExpandFactory;
@@ -21,9 +22,10 @@ public class DirectorServiceImpl implements Service {
 
     private DAOFactory daoFactory = DAOFactory.getInstance();
     private DirectorDao directorDAO = daoFactory.getDirectorDAO();
-    private Gson gson = new Gson();
 
     public String getById(int id) throws ServiceException {
+        Gson gson = new Gson();
+
         try {
             Director directorById = directorDAO.getDirectorById(id);
 
@@ -35,12 +37,12 @@ public class DirectorServiceImpl implements Service {
 
             return gson.toJson(directorResource);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new DataBaseConnectionServiceException("DataBase connection problem.", e);
         }
     }
 
     public String getAll(Map<String, String> params) throws ServiceException {
-
+        Gson gson = new Gson();
         ExpandFactory expandFactory = ExpandFactory.getInstance();
         ExpandInterface directorExpand = expandFactory.getDirectorExpand(params);
 
@@ -55,7 +57,7 @@ public class DirectorServiceImpl implements Service {
 
             return gson.toJson(directorsResource);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new DataBaseConnectionServiceException("DataBase connection problem.", e);
         }
     }
 
